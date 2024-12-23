@@ -298,28 +298,29 @@ const Head = () => {
                   content="Del"
                   className="dell abolute right-[9em] top-[4em] text-xl font-bold "
                 >
-                  <div className=" mt-5 rounded-2xl  grid gap-y-6 bg-gray-900  ">
+                  <div className=" mt-5 rounded-2xl   grid gap-y-6 bg-gray-900  ">
                     {moviesSearch &&
                       moviesSearch.map((movie, i) => (
-                        <Link
-                          to={`/movies/${movie?.id}/title/${movie?.original_title}`}
-                          className="relative rounded-2xl  text-2xl hover:bg-[#0DCAF0]  hover:h-[3rem]  hover:text-3xl "
-                          key={i}
-                        >
-                          <Button
-                            onClick={() => dispatch(aboutSearch())}
-                            className="bg-transparent hover:text-black w-full text-start"
+                        <div className="group hover:bg-[#0DCAF0] " key={i}>
+                          <Link
+                            to={`/movies/${movie.id}/title/${movie.name}`}
+                            className=" relative rounded-2xl  text-2xl   group-hover:text-3xl "
                           >
-                            {movie?.title}
-                          </Button>
-                          <Avatar
-                            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie?.poster_path}`}
-                            alt="avatar"
-                            className="absolute right-3"
-                          />
+                            <Button
+                              onClick={() => dispatch(aboutSearch())}
+                              className="bg-transparent group-hover:text-black w-full text-start"
+                            >
+                              {movie?.title}
+                            </Button>
+                            <Avatar
+                              src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie?.poster_path}`}
+                              alt="avatar"
+                              className="absolute right-3"
+                            />
 
-                          <hr className="mt-4" />
-                        </Link>
+                            <hr className="mt-4" />
+                          </Link>
+                        </div>
                       ))}
                   </div>
                 </Badge>

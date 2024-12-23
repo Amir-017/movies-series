@@ -25,6 +25,8 @@ const AboutActor = () => {
   const backAstep = () => {
     navigate(-1);
   };
+  // console.log(actorsWork);
+
   return (
     <div className="w-full">
       {infoActorLoading ? (
@@ -123,27 +125,53 @@ const AboutActor = () => {
                 <div className="w-[75%] flex overflow-auto gap-6 ">
                   {actorsWork.map((movie, i) => (
                     <div className="" key={i}>
-                      <Link
-                        to={`/movies/${movie.id}/title/${movie.original_title}`}
-                      >
-                        <Card className="mt-10 w-96 bg-gray-900  font-bold ">
-                          <CardHeader color="white" className="relative h-96">
-                            <img
-                              src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
-                              className="w-[150%] h-[100%] "
-                              alt="card-image"
-                            />
-                          </CardHeader>
-                          <CardBody>
-                            <div
-                              variant="h5"
-                              className="mb-2 text-white text-2xl"
-                            >
-                              {movie.title}
-                            </div>
-                          </CardBody>
-                        </Card>
-                      </Link>
+                      {movie.media_type == "movie" ? (
+                        <Link
+                          to={`/movies/${movie.id}/title/${movie.original_title}`}
+                        >
+                          <Card className="mt-10 w-96 bg-gray-900  font-bold ">
+                            <CardHeader color="white" className="relative h-96">
+                              <img
+                                src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
+                                className="w-[150%] h-[100%] "
+                                alt="card-image"
+                              />
+                            </CardHeader>
+                            <CardBody>
+                              <div
+                                variant="h5"
+                                className="mb-2 text-white text-2xl"
+                              >
+                                {movie.media_type == "movie" && movie.title}
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Link>
+                      ) : movie.media_type == "tv" ? (
+                        <Link
+                          to={`/series/${movie.id}/title/${movie.original_title}`}
+                        >
+                          <Card className="mt-10 w-96 bg-gray-900  font-bold ">
+                            <CardHeader color="white" className="relative h-96">
+                              <img
+                                src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
+                                className="w-[150%] h-[100%] "
+                                alt="card-image"
+                              />
+                            </CardHeader>
+                            <CardBody>
+                              <div
+                                variant="h5"
+                                className="mb-2 text-white text-2xl"
+                              >
+                                {movie.media_type == "tv" && movie.name}
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Link>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   ))}
                 </div>

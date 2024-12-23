@@ -221,7 +221,7 @@ const CastAndCrewEpisode = () => {
               onClick={backAstep}
               variant="outlined"
               className={` border-[#0DCAF0] ${
-                !crew.length && "mb-[14em]"
+                crew && !crew.length && "mb-[14em]"
               }  text-[#0DCAF0] hover:bg-[#0DCAF0] hover:text-black`}
             >
               Back a step

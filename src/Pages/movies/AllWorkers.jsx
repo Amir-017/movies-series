@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieDetails } from "../../SystmeRdx/Slices/moviesSlices/moviesSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import {
   Card,
@@ -94,34 +94,36 @@ const AllWorkers = () => {
               {cast &&
                 cast.map((actor, i) => (
                   <div className="" key={i}>
-                    <Card className="w-[15rem] h-[26rem] bg-[#212529] rounded shadow-gray-900 flex my-10">
-                      <CardHeader
-                        floated={false}
-                        shadow={false}
-                        color="transparent"
-                        className="m-0 rounded-2xl "
-                      >
-                        {actor.profile_path ? (
-                          <img
-                            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${actor.profile_path}`}
-                            alt="ui/ux review check"
-                          />
-                        ) : (
-                          <img src={img} width="100%" />
-                        )}
-                      </CardHeader>
-                      <CardBody className="font-bold py-5">
-                        <div
-                          variant="h4"
-                          className="flex flex-col  text-white "
+                    <Link to={`/person/${actor.id}/hisname/${actor.name}`}>
+                      <Card className="w-[15rem] h-[26rem] bg-[#212529] rounded shadow-gray-900 flex my-10">
+                        <CardHeader
+                          floated={false}
+                          shadow={false}
+                          color="transparent"
+                          className="m-0 rounded-2xl "
                         >
-                          <h1> .{actor.name}</h1>
-                          <h1 className="text-xl font-medium text-yellow-800 ">
-                            {actor.character}
-                          </h1>
-                        </div>
-                      </CardBody>
-                    </Card>
+                          {actor.profile_path ? (
+                            <img
+                              src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${actor.profile_path}`}
+                              alt="ui/ux review check"
+                            />
+                          ) : (
+                            <img src={img} width="100%" />
+                          )}
+                        </CardHeader>
+                        <CardBody className="font-bold py-5">
+                          <div
+                            variant="h4"
+                            className="flex flex-col  text-white "
+                          >
+                            <h1> .{actor.name}</h1>
+                            <h1 className="text-xl font-medium text-yellow-800 ">
+                              {actor.character}
+                            </h1>
+                          </div>
+                        </CardBody>
+                      </Card>
+                    </Link>
                   </div>
                 ))}
             </div>
@@ -153,62 +155,64 @@ const AllWorkers = () => {
                         : actor.department}
                     </h1>
                     {/*  */}
-                    <Card className="w-[15rem] h-[26rem] bg-[#212529] rounded shadow-gray-900 flex my-10">
-                      <CardHeader
-                        floated={false}
-                        shadow={false}
-                        color="transparent"
-                        className="m-0 rounded "
-                      >
-                        {actor.profile_path ? (
-                          <img
-                            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${actor.profile_path}`}
-                            alt="ui/ux review check"
-                          />
-                        ) : (
-                          <img src={img} width="100%" />
-                        )}
-                      </CardHeader>
-                      <CardBody className="font-bold py-5">
-                        <div
-                          variant="h4"
-                          className="flex flex-col  text-white "
+                    <Link to={`/person/${actor.id}/hisname/${actor.name}`}>
+                      <Card className="w-[15rem] h-[26rem] bg-[#212529] rounded shadow-gray-900 flex my-10">
+                        <CardHeader
+                          floated={false}
+                          shadow={false}
+                          color="transparent"
+                          className="m-0 rounded "
                         >
-                          {actor.known_for_department == "Writing"
-                            ? actor.name
-                            : actor.known_for_department == "Production"
-                            ? actor.name
-                            : actor.known_for_department == "Camera"
-                            ? actor.name
-                            : actor.known_for_department == "Editing"
-                            ? actor.name
-                            : actor.known_for_department == "Acting"
-                            ? actor.name
-                            : actor.known_for_department == "Art"
-                            ? actor.name
-                            : actor.known_for_department == "Visual Effects"
-                            ? actor.name
-                            : actor.name}
-                          <h1 className="text-xl font-medium text-yellow-800 ">
+                          {actor.profile_path ? (
+                            <img
+                              src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${actor.profile_path}`}
+                              alt="ui/ux review check"
+                            />
+                          ) : (
+                            <img src={img} width="100%" />
+                          )}
+                        </CardHeader>
+                        <CardBody className="font-bold py-5">
+                          <div
+                            variant="h4"
+                            className="flex flex-col  text-white "
+                          >
                             {actor.known_for_department == "Writing"
-                              ? actor.job
+                              ? actor.name
                               : actor.known_for_department == "Production"
-                              ? actor.job
+                              ? actor.name
                               : actor.known_for_department == "Camera"
-                              ? actor.job
+                              ? actor.name
                               : actor.known_for_department == "Editing"
-                              ? actor.job
+                              ? actor.name
                               : actor.known_for_department == "Acting"
-                              ? actor.job
+                              ? actor.name
                               : actor.known_for_department == "Art"
-                              ? actor.job
+                              ? actor.name
                               : actor.known_for_department == "Visual Effects"
-                              ? actor.job
-                              : actor.job}
-                          </h1>
-                        </div>
-                      </CardBody>
-                    </Card>
+                              ? actor.name
+                              : actor.name}
+                            <h1 className="text-xl font-medium text-yellow-800 ">
+                              {actor.known_for_department == "Writing"
+                                ? actor.job
+                                : actor.known_for_department == "Production"
+                                ? actor.job
+                                : actor.known_for_department == "Camera"
+                                ? actor.job
+                                : actor.known_for_department == "Editing"
+                                ? actor.job
+                                : actor.known_for_department == "Acting"
+                                ? actor.job
+                                : actor.known_for_department == "Art"
+                                ? actor.job
+                                : actor.known_for_department == "Visual Effects"
+                                ? actor.job
+                                : actor.job}
+                            </h1>
+                          </div>
+                        </CardBody>
+                      </Card>
+                    </Link>
                   </div>
                 ))}
             </div>
